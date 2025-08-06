@@ -13,6 +13,7 @@ protected:
     virtual void Draw() = 0;
 
     friend class Game;
+    friend class Screen;
 };
 
 
