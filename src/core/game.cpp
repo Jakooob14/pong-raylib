@@ -1,13 +1,9 @@
 #include "game.h"
 #include <raylib.h>
 
+#include "globals.h"
 #include "../systems/screens/game_screen.h"
 #include "../systems/screens/screen.h"
-
-// Game::~Game()
-// {
-//     delete currentScreen;
-// }
 
 void Game::Run()
 {
@@ -50,6 +46,10 @@ void Game::Draw()
 
 void Game::Initialize()
 {
+    // Load global assets
+    mechaFont = LoadFont("../resources/fonts/mecha.png");
+
+    // Create and set current screen
     auto* gameScreen = new GameScreen();
     SetCurrentScreen(gameScreen);
 }

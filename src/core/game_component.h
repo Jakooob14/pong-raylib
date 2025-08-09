@@ -8,12 +8,17 @@ class GameComponent
 public:
     virtual ~GameComponent() = default;
 
+    void Destroy() { destroyed = true; }
+    bool IsDestroyed() const { return destroyed; }
+
 protected:
     virtual void Update() = 0;
     virtual void Draw() = 0;
 
-    friend class Game;
     friend class Screen;
+
+private:
+    bool destroyed{false};
 };
 
 

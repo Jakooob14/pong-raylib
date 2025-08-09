@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.24...3.30)
 project(pong-raylib)
 
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 include(FetchContent)
 
 # Generate compile_commands.json

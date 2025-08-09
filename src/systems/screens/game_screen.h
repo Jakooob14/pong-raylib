@@ -3,6 +3,7 @@
 #include "screen.h"
 
 
+enum class PlayerId;
 class Ball;
 class Paddle;
 
@@ -10,6 +11,7 @@ class GameScreen : public Screen
 {
 protected:
     void Update() override;
+    void Draw() override;
     void Initialize() override;
 
 private:
@@ -17,6 +19,11 @@ private:
     Paddle* paddleRight{nullptr};
 
     Ball* ball{nullptr};
+
+    int scorePlayerLeft{0};
+    int scorePlayerRight{0};
+
+    void Lost(PlayerId player);
 };
 
 

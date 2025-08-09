@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include <memory>
+#include <random>
 #include <raylib.h>
 
 
@@ -10,8 +11,6 @@ class Ball;
 class Game
 {
 public:
-    // ~Game();
-
     void Run();
 
     void SetCurrentScreen(Screen* screen);
@@ -22,6 +21,7 @@ private:
     static constexpr Color windowBackgroundColor{BLACK};
 
     Screen* currentScreen{nullptr};
+
 
     void Update();
     void Draw();
