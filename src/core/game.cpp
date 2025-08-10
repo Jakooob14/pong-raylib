@@ -29,8 +29,11 @@ void Game::SetCurrentScreen(Screen *screen)
 
 void Game::Update()
 {
-    if (!currentScreen) return;
-    currentScreen->Update();
+    const float deltaTime{GetFrameTime()};
+
+    timerManager.UpdateTimers(deltaTime);
+
+    if (currentScreen) currentScreen->Update();
 }
 
 void Game::Draw()

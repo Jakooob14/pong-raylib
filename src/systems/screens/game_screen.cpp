@@ -35,7 +35,6 @@ void GameScreen::Draw()
 
     const float fontSize{static_cast<float>(mechaFont.baseSize) * 3.0f};
     constexpr float spacing{4.0f};
-    // TODO: ADD SCORE
     const std::string text{std::format("{} : {}", scorePlayerLeft, scorePlayerRight)};
 
     const float x{static_cast<float>(GetScreenWidth()) / 2.0f - MeasureTextEx(mechaFont, text.c_str(), fontSize, spacing).x / 2.0f};
@@ -51,8 +50,7 @@ void GameScreen::Initialize()
     paddleLeft = AddComponent<Paddle>(PlayerId::PLAYER_LEFT, 100.0f, 0.0f);
     paddleRight = AddComponent<Paddle>(PlayerId::PLAYER_RIGHT, static_cast<float>(GetScreenWidth()) - 100.0f, 0.0f);
 
-    ball = AddComponent<Ball>();
-    ball->onLose = [this](PlayerId player){ Lost(player); };
+    SpawnBall();
 }
 
 void GameScreen::Lost(PlayerId player)
@@ -65,6 +63,11 @@ void GameScreen::Lost(PlayerId player)
         ++scorePlayerLeft;
     }
 
+    timerManager.CreateTimedFunction(3.0f, [this](){ SpawnBall(); });
+}
+
+void GameScreen::SpawnBall()
+{
     ball = AddComponent<Ball>();
     ball->onLose = [this](PlayerId player){ Lost(player); };
 }

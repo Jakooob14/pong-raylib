@@ -24,7 +24,7 @@ public:
 
     Vector2 velocity{
         250.0f * (GetRandomBool() ? 1.0f : -1.0f),
-        static_cast<float>(GetRandomDouble(-200, 200, 2))
+        static_cast<float>(GetRandomDouble(100, 200, 2)) * (GetRandomBool() ? 1.0f : -1.0f)
     };
 
     // Callback for death event

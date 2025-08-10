@@ -10,11 +10,8 @@
 void Screen::Update()
 {
     // Remove components marked for destruction
-    components.erase(
-        std::remove_if(components.begin(), components.end(),
-            [](const std::unique_ptr<GameComponent>& component) { return component->IsDestroyed(); }),
-            components.end()
-            );
+    std::erase_if(components,
+                  [](const std::unique_ptr<GameComponent>& component) { return component->IsDestroyed(); });
 
     for (auto &component : components) {
         component->Update();

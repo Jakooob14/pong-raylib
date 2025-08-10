@@ -24,6 +24,7 @@ private:
     int scorePlayerRight{0};
 
     void Lost(PlayerId player);
+    void SpawnBall();
 };
 
 
