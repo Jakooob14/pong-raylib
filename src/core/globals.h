@@ -3,7 +3,7 @@
 #include <random>
 
 #include "raylib.h"
-#include "../utils/timer_manager.h"
+#include "../utils/timers/timer_manager.h"
 
 extern Font mechaFont;
 

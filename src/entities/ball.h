@@ -14,16 +14,16 @@ class Ball : public GameComponent
 public:
     Rectangle GetBoundingBox();
 
-    float radius{10.0f};
-
     // Spawn in middle of screen
     Vector2 position{
-        static_cast<float>(GetScreenWidth())/2 - radius/2,
-        static_cast<float>(GetScreenHeight())/2 - radius/2
+        static_cast<float>(GetScreenWidth())/2 - size.x/2,
+        static_cast<float>(GetScreenHeight())/2 - size.y/2
     };
 
+    Vector2 size{16.0f, 16.0f};
+
     Vector2 velocity{
-        250.0f * (GetRandomBool() ? 1.0f : -1.0f),
+        200.0f * (GetRandomBool() ? 1.0f : -1.0f),
         static_cast<float>(GetRandomDouble(100, 200, 2)) * (GetRandomBool() ? 1.0f : -1.0f)
     };
 
