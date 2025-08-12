@@ -1,13 +1,16 @@
 #include "game.h"
+
+#include <cassert>
 #include <raylib.h>
 
 #include "globals.h"
 #include "../systems/screens/game_screen.h"
+#include "../systems/screens/menu_screen.h"
 #include "../systems/screens/screen.h"
 
 void Game::Run()
 {
-    InitWindow(windowWidth, windowHeight, "My first RAYLIB program!");
+    InitWindow(windowWidth, windowHeight, "Pong");
     SetTargetFPS(60);
 
     Initialize();
@@ -33,7 +36,8 @@ void Game::Update()
 
     timerManager.UpdateTimers(deltaTime);
 
-    if (currentScreen) currentScreen->Update();
+    assert(currentScreen && "currentScreen is null in Game::Update()");
+    currentScreen->Update();
 }
 
 void Game::Draw()
@@ -53,6 +57,5 @@ void Game::Initialize()
     mechaFont = LoadFont("../resources/fonts/mecha.png");
 
     // Create and set current screen
-    auto* gameScreen = new GameScreen();
-    SetCurrentScreen(gameScreen);
+    SetCurrentScreen(new MenuScreen());
 }
