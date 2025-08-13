@@ -10,10 +10,10 @@ public:
         ttl(ttl), callback(callback)
     {}
 
-    float GetElapsed() const { return elapsed; }
+    [[nodiscard]] float GetElapsed() const { return elapsed; }
     void AddElapsed(const float deltaTime) { elapsed += deltaTime; }
-    float GetTtl() const { return ttl; }
-    bool IsDone() const { return done; }
+    [[nodiscard]] float GetTtl() const { return ttl; }
+    [[nodiscard]] bool IsDone() const { return done; }
     void SetDone(const bool value) { done = value; }
 
     void InvokeCallback() const;
@@ -23,7 +23,7 @@ private:
     float elapsed{0.0f};
     float ttl{0.0f};
     bool done{false};
-    std::function<void()> callback{};
+    std::function<void()> callback{nullptr};
 };
 
 

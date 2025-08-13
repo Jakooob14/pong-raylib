@@ -9,7 +9,8 @@ class Paddle : public GameComponent
 {
 public:
     explicit Paddle(PlayerId player, float x, float y);
-    Rectangle GetBoundingBox();
+
+    [[nodiscard]] Rectangle GetBoundingBox();
 
 protected:
     void Update() override;

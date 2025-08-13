@@ -13,18 +13,26 @@ void GameScreen::Update()
 
     if (ball && paddleLeft && paddleRight)
     {
+        const Vector2 ballVelocity{ball->GetVelocity()};
+
         if (CheckCollisionRecs(ball->GetBoundingBox(), paddleLeft->GetBoundingBox()))
         {
             // If already in the direction return
-            if (ball->velocity.x > 0.0f) return;
-            ball->velocity.x *= -1;
+            if (ballVelocity.x > 0.0f) return;
+            ball->SetVelocity(Vector2{
+                ballVelocity.x * -1,
+                ballVelocity.y
+            });
         }
 
         if (CheckCollisionRecs(ball->GetBoundingBox(), paddleRight->GetBoundingBox()))
         {
             // If already in the direction return
-            if (ball->velocity.x < 0.0f) return;
-            ball->velocity.x *= -1;
+            if (ballVelocity.x < 0.0f) return;
+            ball->SetVelocity(Vector2{
+                ballVelocity.x * -1,
+                ballVelocity.y
+            });
         }
     }
 }
@@ -65,7 +73,7 @@ void GameScreen::Lost(PlayerId player)
 void GameScreen::SpawnBall()
 {
     ball = AddComponent<Ball>();
-    ball->onLose = [this](const PlayerId player){ Lost(player); };
+    ball->SetOnLose([this](const PlayerId player){ Lost(player); });
 }
 
 void GameScreen::DrawScore()

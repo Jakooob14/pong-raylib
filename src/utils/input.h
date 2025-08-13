@@ -8,6 +8,7 @@ namespace input
 {
     bool IsMoveUp(PlayerId player);
     bool IsMoveDown(PlayerId player);
+    bool IsConfirming();
 }
 
 

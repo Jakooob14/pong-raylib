@@ -8,8 +8,8 @@ class GameComponent
 public:
     virtual ~GameComponent() = default;
 
+    [[nodiscard]] bool IsDestroyed() const { return destroyed; }
     void Destroy() { destroyed = true; }
-    bool IsDestroyed() const { return destroyed; }
 
 protected:
     virtual void Update() = 0;
