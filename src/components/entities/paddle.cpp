@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <raylib.h>
 
-#include "../utils/input.h"
+#include "../../utils/input.h"
 
 
 Paddle::Paddle(const PlayerId player, const float x, const float y) :

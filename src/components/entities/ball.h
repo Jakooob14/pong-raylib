@@ -3,8 +3,8 @@
 #include <functional>
 
 #include "raylib.h"
-#include "../core/game_component.h"
-#include "../utils/random.h"
+#include "../../core/game_component.h"
+#include "../../utils/random.h"
 
 
 enum class PlayerId;

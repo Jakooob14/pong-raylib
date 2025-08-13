@@ -8,5 +8,5 @@ void UIButton::Update()
 
 void UIButton::Draw()
 {
-    DrawRectangleV(position, size);
+    DrawRectangleV(position, size, WHITE);
 }

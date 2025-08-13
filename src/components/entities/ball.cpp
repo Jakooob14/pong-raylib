@@ -2,7 +2,7 @@
 
 #include <cstdio>
 
-#include "../core/types/player_id.h"
+#include "../../core/types/player_id.h"
 
 Rectangle Ball::GetBoundingBox()
 {

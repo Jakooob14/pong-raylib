@@ -1,7 +1,7 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 #include "raylib.h"
-#include "../core/game_component.h"
+#include "../../core/game_component.h"
 
 enum class PlayerId;
 

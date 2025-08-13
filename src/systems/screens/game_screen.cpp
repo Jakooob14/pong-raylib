@@ -3,8 +3,8 @@
 #include <format>
 
 #include "../../core/globals.h"
-#include "../../entities/ball.h"
-#include "../../entities/paddle.h"
+#include "../../components/entities/ball.h"
+#include "../../components/entities/paddle.h"
 #include "../../core/types/player_id.h"
 
 void GameScreen::Update()
