@@ -57,5 +57,5 @@ void Game::Initialize()
     mechaFont = LoadFont("../resources/fonts/mecha.png");
 
     // Create and set current screen
-    SetCurrentScreen(new MenuScreen());
+    SetCurrentScreen(new GameScreen());
 }

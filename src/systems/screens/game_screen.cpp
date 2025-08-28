@@ -53,6 +53,8 @@ void GameScreen::Initialize()
     paddleLeft = AddComponent<Paddle>(PlayerId::PLAYER_LEFT, 100.0f, 0.0f);
     paddleRight = AddComponent<Paddle>(PlayerId::PLAYER_RIGHT, static_cast<float>(GetScreenWidth()) - 100.0f, 0.0f);
 
+    CenterPaddles();
+
     timerManager.StartTimedFunction(spawnTimer);
 }
 
@@ -68,6 +70,8 @@ void GameScreen::Lost(PlayerId player)
 
     spawnTimer->Reset();
     timerManager.StartTimedFunction(spawnTimer);
+
+    CenterPaddles();
 }
 
 void GameScreen::SpawnBall()
@@ -100,4 +104,9 @@ void GameScreen::DrawSpawnTimer() const
     const float y{static_cast<float>(GetScreenHeight()) / 2.0f - MeasureTextEx(mechaFont, text.c_str(), fontSize, spacing).y / 2.0f};
 
     DrawTextEx(mechaFont, text.c_str(), Vector2{x, y}, fontSize, spacing, WHITE);
+}
+
+void GameScreen::CenterPaddles() const {
+    paddleLeft->SetPosition(Vector2{paddleLeft->GetPosition().x, static_cast<float>(GetScreenHeight()) / 2 - paddleLeft->GetSize().y / 2});
+    paddleRight->SetPosition(Vector2{paddleRight->GetPosition().x, static_cast<float>(GetScreenHeight()) / 2 - paddleRight->GetSize().y / 2});
 }

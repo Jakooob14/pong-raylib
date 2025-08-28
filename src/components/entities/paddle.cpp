@@ -7,27 +7,27 @@
 
 
 Paddle::Paddle(const PlayerId player, const float x, const float y) :
-    x(x), y(y), player(player)
+    position(x, y), player(player)
 {}
 
 Rectangle Paddle::GetBoundingBox()
 {
-    return {x, y, static_cast<float>(width), static_cast<float>(height)};
+    return {position.x, position.y, size.x, size.y};
 }
 
 void Paddle::Update()
 {
-    float speedTime{speed * GetFrameTime()};
+    const float speedTime{speed * GetFrameTime()};
 
-    if (input::IsMoveUp(player)) y -= speedTime;
-    if (input::IsMoveDown(player)) y += speedTime;
+    if (input::IsMoveUp(player)) position.y -= speedTime;
+    if (input::IsMoveDown(player)) position.y += speedTime;
 
     // Clamp to screen
-    if (y < 0) y = 0;
-    if (y > GetScreenHeight() - height) y = GetScreenHeight() - height;
+    if (position.y < 0) position.y = 0;
+    if (position.y > static_cast<float>(GetScreenHeight()) - size.y) position.y = static_cast<float>(GetScreenHeight()) - size.y;
 }
 
 void Paddle::Draw()
 {
-    DrawRectangle(x, y, width, height, WHITE);
+    DrawRectangleV(position, size, WHITE);
 }

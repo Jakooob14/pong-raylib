@@ -30,6 +30,7 @@ private:
     void SpawnBall();
     void DrawScore();
     void DrawSpawnTimer() const;
+    void CenterPaddles() const;
 };
 
 

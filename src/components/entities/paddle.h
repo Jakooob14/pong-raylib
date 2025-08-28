@@ -12,18 +12,21 @@ public:
 
     [[nodiscard]] Rectangle GetBoundingBox();
 
+    [[nodiscard]] Vector2 GetPosition() const { return position; }
+    void SetPosition(const Vector2& value) { position = value; }
+
+    [[nodiscard]] Vector2 GetSize() const { return size; }
+    void SetSize(const Vector2& value) { size = value; }
+
 protected:
     void Update() override;
     void Draw() override;
 
 private:
-    float x{};
-    float y{};
+    Vector2 position{};
+    Vector2 size{10, 60};
 
     float speed{300.0f};
-
-    int width{10};
-    int height{60};
 
     PlayerId player{};
 };
