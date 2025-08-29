@@ -7,6 +7,9 @@
 
 class MenuScreen : public Screen
 {
+public:
+    explicit MenuScreen(Game& game) : Screen(game) {}
+
 protected:
     void Update() override;
     void Draw() override;
@@ -16,6 +19,7 @@ private:
     int buttons{0};
 
     void AddButton(const char* text, const std::function<void()>& onClick = nullptr);
+    void PlayClick();
 };
 
 

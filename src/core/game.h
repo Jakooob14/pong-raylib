@@ -4,8 +4,9 @@
 #include <random>
 #include <raylib.h>
 
+#include "../systems/screens/screen.h"
 
-class Screen;
+
 class Ball;
 
 class Game
@@ -13,14 +14,14 @@ class Game
 public:
     void Run();
 
-    void SetCurrentScreen(Screen* screen);
+    void SetCurrentScreen(std::unique_ptr<Screen> screen);
 
 private:
     static constexpr int windowWidth{800};
     static constexpr int windowHeight{600};
     static constexpr Color windowBackgroundColor{BLACK};
 
-    Screen* currentScreen{nullptr};
+    std::unique_ptr<Screen> currentScreen{nullptr};
 
 
     void Update();

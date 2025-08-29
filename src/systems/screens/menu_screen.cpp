@@ -1,6 +1,8 @@
 #include "menu_screen.h"
 
+#include "game_screen.h"
 #include "../../components/ui/button.h"
+#include "../../core/game.h"
 
 void MenuScreen::Update()
 {
@@ -16,7 +18,7 @@ void MenuScreen::Initialize()
 {
     Screen::Initialize();
 
-    AddButton("Hello World!");
+    AddButton("Play", [this](){ PlayClick(); });
     AddButton("Hi!!!");
 }
 
@@ -36,4 +38,8 @@ void MenuScreen::AddButton(const char* text, const std::function<void()>& onClic
     if (onClick) button->SetOnClick(onClick);
 
     ++buttons;
+}
+
+void MenuScreen::PlayClick() {
+    game.SetCurrentScreen(std::make_unique<GameScreen>(game));
 }

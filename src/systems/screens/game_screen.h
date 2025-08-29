@@ -10,6 +10,9 @@ class Paddle;
 
 class GameScreen : public Screen
 {
+public:
+    explicit GameScreen(Game& game) : Screen(game) {}
+
 protected:
     void Update() override;
     void Draw() override;

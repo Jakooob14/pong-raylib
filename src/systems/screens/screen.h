@@ -6,9 +6,12 @@
 
 #include "../../core/game_component.h"
 
+class Game;
+
 class Screen
 {
 public:
+    explicit Screen(Game& game) : game(game) {}
     virtual ~Screen() = default;
 
     /**
@@ -43,6 +46,8 @@ protected:
     virtual void Draw();
     // Initialize game components and other starting game stuff
     virtual void Initialize() {}
+
+    Game& game;
 
     friend class Game;
 

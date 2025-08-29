@@ -24,9 +24,9 @@ void Game::Run()
     CloseWindow();
 }
 
-void Game::SetCurrentScreen(Screen *screen)
+void Game::SetCurrentScreen(std::unique_ptr<Screen> screen)
 {
-    currentScreen = screen;
+    currentScreen = std::move(screen);
     currentScreen->Initialize();
 }
 
@@ -57,5 +57,5 @@ void Game::Initialize()
     mechaFont = LoadFont("../resources/fonts/mecha.png");
 
     // Create and set current screen
-    SetCurrentScreen(new GameScreen());
+    SetCurrentScreen(std::make_unique<MenuScreen>(*this));
 }
