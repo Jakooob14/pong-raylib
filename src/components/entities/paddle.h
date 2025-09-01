@@ -18,6 +18,9 @@ public:
     [[nodiscard]] Vector2 GetSize() const { return size; }
     void SetSize(const Vector2& value) { size = value; }
 
+    [[nodiscard]] bool IsLocked() const { return locked; }
+    void SetLocked(const bool& value) { locked = value; }
+
 protected:
     void Update() override;
     void Draw() override;
@@ -27,6 +30,8 @@ private:
     Vector2 size{10, 60};
 
     float speed{300.0f};
+
+    bool locked{false};
 
     PlayerId player{};
 };

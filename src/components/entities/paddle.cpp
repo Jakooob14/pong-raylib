@@ -17,6 +17,8 @@ Rectangle Paddle::GetBoundingBox()
 
 void Paddle::Update()
 {
+    if (locked) return;
+
     const float speedTime{speed * GetFrameTime()};
 
     if (input::IsMoveUp(player)) position.y -= speedTime;

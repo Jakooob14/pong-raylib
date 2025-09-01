@@ -15,11 +15,14 @@ public:
     void Run();
 
     void SetCurrentScreen(std::unique_ptr<Screen> screen);
+    void Exit();
 
 private:
     static constexpr int windowWidth{800};
     static constexpr int windowHeight{600};
     static constexpr Color windowBackgroundColor{BLACK};
+
+    bool shouldExit{false};
 
     std::unique_ptr<Screen> currentScreen{nullptr};
 

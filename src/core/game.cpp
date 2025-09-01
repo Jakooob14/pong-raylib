@@ -15,7 +15,7 @@ void Game::Run()
 
     Initialize();
 
-    while (!WindowShouldClose())
+    while (!WindowShouldClose() && !shouldExit)
     {
         Update();
         Draw();
@@ -28,6 +28,10 @@ void Game::SetCurrentScreen(std::unique_ptr<Screen> screen)
 {
     currentScreen = std::move(screen);
     currentScreen->Initialize();
+}
+
+void Game::Exit() {
+    shouldExit = true;
 }
 
 void Game::Update()

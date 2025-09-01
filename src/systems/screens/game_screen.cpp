@@ -56,6 +56,9 @@ void GameScreen::Initialize()
     CenterPaddles();
 
     timerManager.StartTimedFunction(spawnTimer);
+
+    paddleLeft->SetLocked(true);
+    paddleRight->SetLocked(true);
 }
 
 void GameScreen::Lost(PlayerId player)
@@ -72,12 +75,18 @@ void GameScreen::Lost(PlayerId player)
     timerManager.StartTimedFunction(spawnTimer);
 
     CenterPaddles();
+
+    paddleLeft->SetLocked(true);
+    paddleRight->SetLocked(true);
 }
 
 void GameScreen::SpawnBall()
 {
     ball = AddComponent<Ball>();
     ball->SetOnLose([this](const PlayerId player){ Lost(player); });
+
+    paddleLeft->SetLocked(false);
+    paddleRight->SetLocked(false);
 }
 
 void GameScreen::DrawScore()

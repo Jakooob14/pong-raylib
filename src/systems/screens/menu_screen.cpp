@@ -19,7 +19,7 @@ void MenuScreen::Initialize()
     Screen::Initialize();
 
     AddButton("Play", [this](){ PlayClick(); });
-    AddButton("Hi!!!");
+    AddButton("Exit", [this](){ game.Exit(); });
 }
 
 void MenuScreen::AddButton(const char* text, const std::function<void()>& onClick)
