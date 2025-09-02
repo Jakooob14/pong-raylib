@@ -5,6 +5,8 @@
 #include "screen.h"
 
 
+class Button;
+
 class MenuScreen : public Screen
 {
 public:
@@ -18,7 +20,7 @@ protected:
 private:
     int buttons{0};
 
-    void AddButton(const char* text, const std::function<void()>& onClick = nullptr);
+    Button* AddButton(const char* text, const std::function<void()>& onClick = nullptr);
     void PlayClick();
 };
 

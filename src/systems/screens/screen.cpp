@@ -14,7 +14,7 @@ void Screen::Update()
                   [](const std::unique_ptr<GameComponent>& component) { return component->IsDestroyed(); });
 
     for (auto &component : components) {
-        if (!component) return;
+        if (!component) continue;
         component->Update();
     }
 }
@@ -24,7 +24,7 @@ void Screen::Draw()
     ClearBackground(screenBackgroundColor);
 
     for (auto& component : components) {
-        if (!component) return;
+        if (!component) continue;
         component->Draw();
     }
 }

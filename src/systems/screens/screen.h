@@ -44,7 +44,6 @@ public:
 protected:
     virtual void Update();
     virtual void Draw();
-    // Initialize game components and other starting game stuff
     virtual void Initialize() {}
 
     Game& game;

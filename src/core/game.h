@@ -29,7 +29,7 @@ private:
 
     void Update();
     void Draw();
-    // Initialize game components and other starting game stuff
+    // Initialize starting game stuff
     void Initialize();
 };
 

@@ -11,8 +11,20 @@ class UIComponent : public GameComponent
 public:
     UIComponent() = default;
 
+    enum class Anchor {
+        TOP_LEFT,
+        TOP_CENTER,
+        TOP_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_CENTER,
+        BOTTOM_RIGHT,
+        CENTER_LEFT,
+        CENTER_RIGHT,
+        CENTER
+    };
+
     [[nodiscard]] Vector2 GetPosition() const { return position; }
-    void SetPosition(const Vector2& value) { position = value; }
+    void SetPosition(const Vector2& value);
 
     [[nodiscard]] Vector2 GetSize() const { return size; }
     void SetSize(const Vector2& value) { size = value; }
@@ -21,8 +33,14 @@ public:
 
     [[nodiscard]] bool IsHovering() const;
 
+    [[nodiscard]] Anchor GetAnchor() const { return anchor; }
+    void SetAnchor(const Anchor& value) { anchor = value; }
+
+    [[nodiscard]] Vector2 GetBasePosition() const { return basePosition; }
+
 protected:
     void Update() override;
+    virtual Vector2 CalculateAnchoredPosition();
 
 private:
     Vector2 position{0.0f, 0.0f};
@@ -30,6 +48,9 @@ private:
     Color backgroundColor{WHITE};
     Color textColor{BLACK};
     const char* text{};
+    Anchor anchor{Anchor::TOP_LEFT};
+
+    Vector2 basePosition{};
 
     bool hasClicked{false};
 

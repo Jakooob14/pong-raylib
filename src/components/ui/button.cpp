@@ -2,7 +2,6 @@
 
 #include "raylib.h"
 #include "../../core/globals.h"
-#include "../../utils/input.h"
 
 void Button::Draw()
 {

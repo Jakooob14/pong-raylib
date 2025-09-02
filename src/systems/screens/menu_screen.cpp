@@ -2,6 +2,7 @@
 
 #include "game_screen.h"
 #include "../../components/ui/button.h"
+#include "../../components/ui/text.h"
 #include "../../core/game.h"
 
 void MenuScreen::Update()
@@ -20,24 +21,29 @@ void MenuScreen::Initialize()
 
     AddButton("Play", [this](){ PlayClick(); });
     AddButton("Exit", [this](){ game.Exit(); });
+
+    auto* text = AddComponent<Text>("Pong");
+    text->SetAnchor(UIComponent::Anchor::CENTER);
+    text->SetFontSize(10.0f);
+    text->SetPosition(Vector2{0.0f, -120.0f});
 }
 
-void MenuScreen::AddButton(const char* text, const std::function<void()>& onClick)
+Button* MenuScreen::AddButton(const char* text, const std::function<void()>& onClick)
 {
     auto* button = AddComponent<Button>();
 
     constexpr Vector2 size{250.0f, 40.0f};
-    const Vector2 pos{
-        static_cast<float>(GetScreenWidth()) / 2.0f - size.x / 2.0f,
-        static_cast<float>(GetScreenHeight()) / 2.0f - size.y / 2.0f + static_cast<float>(buttons) * size.y
-    };
+    const Vector2 pos = {0.0f, static_cast<float>(buttons) * size.y};
 
+    button->SetAnchor(UIComponent::Anchor::CENTER);
     button->SetPosition(pos);
     button->SetSize(size);
     button->SetText(text);
     if (onClick) button->SetOnClick(onClick);
 
     ++buttons;
+
+    return button;
 }
 
 void MenuScreen::PlayClick() {
