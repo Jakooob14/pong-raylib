@@ -62,3 +62,11 @@ if (APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
     target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
 endif()
+
+# On Windows set the subsystem as Windows
+if (WIN32)
+    set_target_properties(pong-raylib PROPERTIES
+            WIN32_EXECUTABLE TRUE
+            LINK_FLAGS "/ENTRY:mainCRTStartup"
+    )
+endif()
